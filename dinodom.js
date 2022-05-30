@@ -91,9 +91,42 @@ document.body.addEventListener("keyup", function (event) {
 let segundos = 0;
 
 // Ejecutame la función cada 1000ms (1 segundo)
-setInterval(() => {
-    segundos++;
-    console.log("hola hola! Desde que abriste la app han pasado estos segundos: " + segundos);
-}, 1000);
+// setInterval(() => {
+//     segundos++;
+//     console.log("hola hola! Desde que abriste la app han pasado estos segundos: " + segundos);
+// }, 1000);
 
 
+// evento change
+let questionarioDino = document.querySelector("#questionario");
+questionarioDino.addEventListener("change", function (event) {
+
+    let resultado = document.querySelector("#resultado-test");
+    resultado.style.display = "block";
+
+    if (event.target.value == "1") {
+        resultado.style.color = "green";
+        resultado.textContent = "¡Respuesta Correcta!";
+    }
+
+    else {
+        resultado.style.color = "red";
+        resultado.textContent = "Necesitas mejorar en tus conocimientos réptiles";
+    }
+
+});
+
+// evento input
+document.querySelector("#cambiaTexto").addEventListener("change", (event) => {
+
+    let nuevoTexto = event.target.value;
+
+    document.querySelector("h1").textContent = nuevoTexto;
+});
+
+// evento input a través de la propiedad oninput
+document.querySelector("#cambiaColorFondo").oninput = function (event) {
+    let nuevoColor = event.target.value;
+
+    document.body.style.backgroundColor = nuevoColor;
+}
